@@ -108,10 +108,12 @@ int prec(char op)
 
 void check_error(char* exp) {
     err = -1;
+    int ind_check = 0;
     int len = strlen(exp);
 
     int cnt = 0;
-    if (exp[0] == '+' || exp[0] == '-' || exp[0] == '/' || exp[0] == '*')
+    if (exp[0] == ' ') ind_check = 1;
+    if (exp[ind_check] == '+' || exp[ind_check] == '-' || exp[ind_check] == '/' || exp[ind_check] == '*')
     {
         printf("Error : Invalid expression\n");
         err = 3;
@@ -208,7 +210,7 @@ int main(void)
     element expression[MAX_STACK_SIZE];
     element postfix[MAX_STACK_SIZE];
 
-    printf("Enter an infix expression :");
+    printf("Enter an infix expression: ");
     scanf_s("%[^\n]s", expression, MAX_STACK_SIZE);
 
     infix_to_postfix(expression, postfix);
